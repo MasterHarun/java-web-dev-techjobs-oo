@@ -21,17 +21,17 @@ public class Job {
         nextId++;
     }
     public Job(
-            String aName,
-            Employer aEmployer,
-            Location aLocation,
-            PositionType aPositionType,
-            CoreCompetency aCoreCompetency) {
+            String name,
+            Employer employer,
+            Location location,
+            PositionType positionType,
+            CoreCompetency coreCompetency) {
         this();
-        this.name = aName;
-        this.employer = aEmployer;
-        this.location = aLocation;
-        this.positionType = aPositionType;
-        this.coreCompetency = aCoreCompetency;
+        this.name = name;
+        this.employer = employer;
+        this.location = location;
+        this.positionType = positionType;
+        this.coreCompetency = coreCompetency;
     }
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
@@ -47,6 +47,33 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+    @Override
+    public String toString() {
+        if(this.name == null && this.employer == null && this.location == null && this. positionType == null && this.coreCompetency == null){
+            return "OOPS! This job does not seem to exist.";
+        }
+        if(this.getName().equals("")){
+            this.setName("Data not available.");
+        }
+        if(this.getEmployer().getValue().equals("")){
+            this.setEmployer(new Employer("Data not available."));
+        }
+        if(this.getLocation().getValue().equals("")){
+            this.setLocation(new Location("Data not available."));
+        }
+        if(this.getPositionType().getValue().equals("")){
+            this.setPositionType(new PositionType("Data not available."));
+        }
+        if(this.getCoreCompetency().getValue().equals("")){
+            this.setCoreCompetency(new CoreCompetency("Data not available."));
+        }
+        return "ID: " + this.getId() +
+                "\nName: " + this.getName() +
+                "\nEmployer: " + this.getEmployer() +
+                "\nLocation: " + this.getLocation() +
+                "\nPosition Type: " + this.getPositionType() +
+                "\nCore Competency: " + this.getCoreCompetency() + "\n";
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
